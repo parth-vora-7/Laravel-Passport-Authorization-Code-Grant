@@ -43,12 +43,12 @@ Route::get('/callback', function (Request $request) {
 
     $accessToken = json_decode((string) $response->getBody(), true)['access_token'];
 
-    $user_info = $http->get('http://localhost:9000/api/user', [
+    $userInfo = $http->get('http://localhost:9000/api/user', [
     	'headers' => [
         	'Accept' => 'application/json',
         	'Authorization' => 'Bearer '.$accessToken,
     	],
 	]);
 
-    return $user_info->getBody();
+    return $userInfo->getBody();
 });
